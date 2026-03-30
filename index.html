@@ -1,386 +1,1202 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Evanson Mwangi Chege - Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <meta name="description" content="Evanson Mwangi Chege - AI Data Specialist, Data Annotator, Technical Support Specialist. Portfolio." />
+  <title>Milstead Justin | AI Engineer Portfolio</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <style>
+    :root {
+      --bg: #445782;
+      --bg-soft: #162033;
+      --panel: #182235;
+      --panel-strong: #1d2940;
+      --text: #f8fafc;
+      --muted: #c5cfdf;
+      --accent: #94a3b8;
+      --accent-2: #e2e8f0;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 16px 36px rgba(0,0,0,0.18);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .section {
+      padding: 68px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 2.6vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      max-width: 720px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      font-size: 1rem;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      padding: 14px 0;
+      background: rgba(7, 11, 22, 0.78);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+        .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+      background: #f8fafc;
+      display: grid;
+      place-items: center;
+    }
+
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #25324a;
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 18px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .hero-grid-refined {
+      max-width: 1080px;
+    }
+
+    .hero-card {
+      padding: 34px;
+    }
+
+    .hero-main-card {
+      display: grid;
+      gap: 20px;
+    }
+
+    .hero-profile-wrap {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-image-block {
+      position: relative;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-content-block {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-role {
+      font-size: clamp(1.05rem, 2vw, 1.45rem);
+      color: var(--accent-2);
+      font-weight: 600;
+      margin-top: -6px;
+    }
+
+    .hero-tagline {
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 650px;
+      margin-bottom: 6px;
+    }
+
+    .hero-personal-info {
+      display: grid;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .info-pill {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #202c43;
+      color: var(--muted);
+    }
+
+    .info-pill strong {
+      color: var(--text);
+    }
+
+    .hero-stats-only {
+      margin-top: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--accent-2);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      line-height: 0.98;
+      margin-bottom: 0;
+    }
+
+     .hero p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      max-width: 680px;
+      margin-bottom: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: #334155;
+      color: var(--text);
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .meta-chip {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+    }
+
+    .profile-panel {
+      display: grid;
+      gap: 20px;
+      padding: 28px;
+    }
+
+    .profile-top {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(124,156,255,0.3), rgba(89,225,194,0.28));
+      border: 1px solid var(--border);
+    }
+
+    .profile-top h2 {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+
+    .profile-top p,
+    .mini-card p,
+    .stat-label {
+      color: var(--muted);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      text-align: center;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+    }
+
+    .stat-number {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    /* About */
+    .about-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .about-card,
+    .contact-card,
+    .timeline-card,
+    .skill-card,
+    .project-card {
+      padding: 28px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .highlights {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .highlight {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .highlight-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .focus-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+    }
+
+    .focus-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Skills */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .filter-btn {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      color: var(--text);
+      background: #25324a;
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .skills-grid,
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+    }
+
+    .skill-card h3,
+    .timeline-card h3,
+    .project-card h3,
+    .contact-card h3,
+    .about-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* Timeline */
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--accent-2);
+      margin-bottom: 10px;
+    }
+
+    .timeline-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .timeline-points {
+      display: grid;
+      gap: 8px;
+    }
+
+    .timeline-points li {
+      color: var(--muted);
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .timeline-points li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #94a3b8;
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    /* Projects */
+    .project-card {
+      display: grid;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      color: var(--text);
+      background: #334155;
+      font-weight: 700;
+    }
+
+    .project-card p {
+      color: var(--muted);
+    }
+
+    /* Contact */
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+
+    .contact-item {
+      display: flex;
+      justify-content: left;
+      gap: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+    }
+
+    .contact-item span {
+      color: var(--muted);
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      padding: 14px 16px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      padding: 26px 0 50px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: inline-flex; }
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 4%;
+        left: 4%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px;
+        border-radius: 18px;
+        background: #101828;
+        border: 1px solid var(--border);
+        display: none;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .skills-grid,
+      .projects-grid,
+      .mini-grid,
+      .stats,
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-profile-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo {
+        height: 340px;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-card,
+      .profile-panel,
+      .about-card,
+      .contact-card,
+      .timeline-card,
+      .skill-card,
+      .project-card {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <div class="blob blob-1" aria-hidden="true"></div>
-  <div class="blob blob-2" aria-hidden="true"></div>
-
-  <header class="header" id="top">
+  <header>
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="Home">
-        <img class="brand-logo" src="assets/evanson.jpg" alt="Evanson logo" />
-        <div class="brand-text">
-          <span class="brand-name">Evanson Mwangi</span>
-          <span class="brand-role">Portfolio</span>
-        </div>
+      <a href="#home" class="brand">
+        <span class="brand-logo">
+          <img src="images/Profilee 2.jpeg" />
+        </span>
+        <span>Milstead Justin</span>
       </a>
 
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="menu-btn" id="menuBtn">Menu</button>
 
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <a class="btn btn-sm" href="#contact">Hire Me</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="pill">
-            <span class="dot"></span>
-            Open to remote freelance and contract work
-          </div>
-
-       <h1 class="h1">
-  I help teams with
-  <span class="dynamic-wrap">
-    <span class="dynamic" id="dynamicText"></span>
-    <span class="caret" aria-hidden="true"></span>
-  </span>
-</h1>
-
-<p class="lead">
-  Front-end Developer, Data Annotator, and Technical Support Specialist based in Nairobi, Kenya.
-</p>
-
-          <div class="hero-cta">
-            <a class="btn" href="#projects">View Projects</a>
-            <a class="btn btn-ghost" href="#contact">Contact</a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat-card pop">
-              <span class="stat-num" data-count="10">0</span>
-              <span class="stat-label">hrs+/week availability</span>
+    <section class="hero" id="home">
+      <div class="container hero-grid hero-grid-refined">
+        <div class="hero-card glass reveal hero-main-card">
+          <div class="hero-profile-wrap">
+            <div class="hero-image-block">
+              <img
+                src="images/profile.png"
+                alt="Milstead Justin portrait"
+                class="hero-photo"
+              />
             </div>
-            <div class="stat-card pop">
-              <span class="stat-num" data-count="4">0</span>
-              <span class="stat-label">languages</span>
-            </div>
-            <div class="stat-card pop">
-              <span class="stat-num" data-count="3">0</span>
-              <span class="stat-label">core roles</span>
+
+            <div class="hero-content-block">
+              <h1>Milstead Justin</h1>
+              <h2 class="hero-role">AI Engineer | Machine Learning Specialist | AI Trainer</h2>
+              <p class="hero-tagline">
+                Building reliable AI systems, scalable machine learning workflows, and high-quality LLM experiences that create measurable impact.
+              </p>
+
+              <div class="hero-personal-info">
+                <div class="info-pill"><strong>Email:</strong> <span>milsteadjustin74@gmail.com</span></div>
+                <div class="info-pill"><strong>LinkedIn:</strong> <span>linkedin.com/in/milstead-justin</span></div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="hero-card pop tilt" data-tilt>
-          <div class="hero-avatar">
-            <img src="assets/evanson.jpg" alt="Evanson Mwangi Chege" />
-          </div>
-
-          <div class="hero-card-body">
-            <h2 class="h2">Quick Profile</h2>
-
-            <!-- 10 skill chips -->
-            <ul class="chips">
-              <li>Data Annotation</li>
-              <li>Quality Assurance</li>
-              <li>Text Tagging</li>
-              <li>Remote Task Management</li>
-              <li>Technical Support</li>
-            </ul>
-
-            <div class="mini-links">
-              <a class="mini" href="mailto:evanschege35@gmail.com">Email</a>
-              <a class="mini" href="https://www.linkedin.com/in/evans-chege" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a class="mini" href="tel:+254705516386">Call</a>
+          <div class="stats hero-stats-only">
+            <div class="stat-card">
+              <div class="stat-number" data-target="5">0</div>
+              <div class="stat-label">Years of Experience</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-target="50">0</div>
+              <div class="stat-label">K+ Users Supported</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-target="40">0</div>
+              <div class="stat-label">Process Time Reduced %</div>
             </div>
           </div>
         </div>
       </div>
-
-      <a class="scroll-indicator" href="#about" aria-label="Scroll">
-        <span></span>
-      </a>
     </section>
 
-    <!-- ABOUT -->
     <section class="section" id="about">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2">About</h2>
-          <p class="muted">A quick snapshot of who I am and what I do.</p>
-        </div>
+        <h2 class="section-title reveal">About Me</h2>
+        <p class="section-subtitle reveal">
+          A professional portfolio site that presents AI engineering expertise, machine learning impact, and hands-on model evaluation experience in a modern and recruiter-friendly format.
+        </p>
 
-        <div class="grid-2">
-          <div class="card pop reveal">
-            <h3 class="h3">What I bring</h3>
-            <p>
-              I combine technical proficiency with a strong quality mindset - supporting AI improvements through careful data evaluation,
-              labeling/tagging, and consistency checks, alongside real-world troubleshooting and support experience.
+        <div class="about-grid">
+          <div class="about-card glass reveal">
+            <h3>Professional Summary</h3>
+            <p class="lead">
+              I specialize in designing, deploying, and optimizing AI-driven systems across machine learning, NLP, computer vision, and large language model workflows. My experience spans production engineering, inference infrastructure, data pipelines, prompt design, logical reasoning assessment, and high-quality AI evaluation.
             </p>
-            <div class="divider"></div>
-            <p class="muted">
-              Nairobi, Kenya - Available for flexible remote work
-            </p>
+
+            <div class="highlights">
+              <div class="highlight">
+                <span class="highlight-dot"></span>
+                <div>Built and optimized LLM applications and AI assistants for large-scale usage.</div>
+              </div>
+              <div class="highlight">
+                <span class="highlight-dot"></span>
+                <div>Developed real-time inference systems and scalable ML pipelines using cloud-native tooling.</div>
+              </div>
+              <div class="highlight">
+                <span class="highlight-dot"></span>
+                <div>Improved model quality through structured annotation, ranking, reasoning analysis, and prompt evaluation.</div>
+              </div>
+            </div>
           </div>
 
-          <div class="card pop reveal">
-            <h3 class="h3">Services</h3>
-            <ul class="list">
-              <li>AI data annotation (text / image)</li>
-              <li>Pairwise comparisons and output rating</li>
-              <li>Content quality checks (Amharic and English)</li>
-              <li>Technical support and troubleshooting</li>
-              <li>Front-end web development</li>
-            </ul>
+          <div class="about-card glass reveal">
+            <h3>Core Focus Areas</h3>
+            <div class="focus-grid">
+              <div class="focus-item">
+                <strong>Machine Learning Systems</strong>
+                <p>Scalable model pipelines, forecasting, automation, and deployment workflows.</p>
+              </div>
+              <div class="focus-item">
+                <strong>LLM Applications</strong>
+                <p>Reasoning evaluation, prompt engineering, workflow optimization, and assistant design.</p>
+              </div>
+              <div class="focus-item">
+                <strong>Computer Vision</strong>
+                <p>Annotation, image evaluation, quality inspection systems, and model grounding tasks.</p>
+              </div>
+              <div class="focus-item">
+                <strong>MLOps & Infrastructure</strong>
+                <p>AWS, Docker, Kubernetes, ETL pipelines, monitoring, and real-time inference systems.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
     <section class="section" id="skills">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Skills</h2>
-          <p class="muted">Focused and job-relevant.</p>
+        <h2 class="section-title reveal">Skills & Expertise</h2>
+        <p class="section-subtitle reveal">
+          Use the filters to explore technical strengths across AI engineering, model evaluation, infrastructure, and production systems.
+        </p>
+
+        <div class="toolbar reveal">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="ai">AI Engineering</button>
+          <button class="filter-btn" data-filter="llm">LLM & Evaluation</button>
+          <button class="filter-btn" data-filter="infra">Infrastructure</button>
         </div>
 
-        <div class="cards">
-          <article class="card pop reveal tilt" data-tilt>
-            <h3 class="h3">AI and Data</h3>
-            <div class="tag-row">
-              <span class="tag">Data Annotation</span>
-              <span class="tag">Data Evaluation</span>
-              <span class="tag">QA</span>
-              <span class="tag">Pairwise Comparison</span>
-              <span class="tag">Labeling</span>
+        <div class="skills-grid">
+          <article class="skill-card glass reveal" data-category="ai">
+            <h3>Machine Learning</h3>
+            <p class="lead">Model development, predictive analytics, performance optimization, and production-ready AI solutions.</p>
+            <div class="tags">
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Deep Learning</span>
+              <span class="tag">Forecasting</span>
+              <span class="tag">Model Optimization</span>
             </div>
           </article>
 
-          <article class="card pop reveal tilt" data-tilt>
-            <h3 class="h3">Support</h3>
-            <div class="tag-row">
-              <span class="tag">Troubleshooting</span>
-              <span class="tag">Ticketing</span>
-              <span class="tag">Documentation</span>
-              <span class="tag">Customer Support</span>
-              <span class="tag">Remote Work</span>
+          <article class="skill-card glass reveal" data-category="llm">
+            <h3>LLMs & Prompt Engineering</h3>
+            <p class="lead">Prompt design, reasoning analysis, preference ranking, side-by-side evaluation, and workflow tuning.</p>
+            <div class="tags">
+              <span class="tag">Prompt Engineering</span>
+              <span class="tag">Preference Ranking</span>
+              <span class="tag">Logical Reasoning</span>
+              <span class="tag">AI Evaluation</span>
             </div>
           </article>
 
-          <article class="card pop reveal tilt" data-tilt>
-            <h3 class="h3">Languages</h3>
-            <div class="tag-row">
-              <span class="tag">Amharic (Native)</span>
-              <span class="tag">English (Fluent - C2)</span>
-              <span class="tag">Swahili (Native)</span>
-              <span class="tag">Spanish (Basic)</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-head row">
-          <div>
-            <h2 class="h2">Projects</h2>
-            <p class="muted">A few highlights. Click a card to preview.</p>
-          </div>
-          <div class="filters">
-            <button class="chip active" data-filter="all">All</button>
-            <button class="chip" data-filter="ai">AI/Data</button>
-            <button class="chip" data-filter="web">Web</button>
-            <button class="chip" data-filter="support">Support</button>
-          </div>
-        </div>
-
-        <div class="project-grid" id="projectGrid">
-          
-          <article class="project-card pop reveal" data-category="support"
-            data-title="Remote and on-site technical support - Jowa Networks"
-            data-desc="Diagnosed connectivity issues, restored service, and documented resolutions using structured ticket notes for faster future troubleshooting."
-            data-img="assets/projects/project1.jpg"
-            data-tags="Troubleshooting,Networking,Ticketing,Documentation">
-            <img src="assets/projects/project1.jpg" alt="Project preview 1" />
-            <div class="project-body">
-                <h3>Remote and on-site technical support</h3>
-                <p>Troubleshooting - Ticketing - Documentation</p>
-                <div class="project-tags">
-                <span>Support</span><span>Networking</span><span>Tickets</span>
-                </div>
-            </div>
-            </article>
-
-          <article class="project-card pop reveal" data-category="ai"
-            data-title="Annotation Workflow (Text + Image)"
-            data-desc="Structured labeling and tagging workflow with quality checks and consistency validation."
-            data-img="assets/projects/project2.jpg"
-            data-tags="Annotation,Labeling,Consistency">
-            <img src="assets/projects/project2.jpg" alt="Project preview 2" />
-            <div class="project-body">
-              <h3>Annotation Workflow (Text + Image)</h3>
-              <p>Labeling - Tagging - Consistency</p>
-              <div class="project-tags">
-                <span>AI/Data</span><span>Labeling</span><span>QA</span>
-              </div>
+          <article class="skill-card glass reveal" data-category="ai">
+            <h3>Computer Vision</h3>
+            <p class="lead">Video annotation, image description, model grounding tasks, and automated inspection systems.</p>
+            <div class="tags">
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Annotation</span>
+              <span class="tag">Image Rating</span>
+              <span class="tag">Grounding</span>
             </div>
           </article>
 
-          <article class="project-card pop reveal" data-category="web"
-            data-title="Modern Portfolio Website"
-            data-desc="Responsive personal site with animations, project previews, and contact flow."
-            data-img="assets/projects/project3.jpg"
-            data-tags="HTML,CSS,JS,Responsive">
-            <img src="assets/projects/project3.jpg" alt="Project preview 3" />
-            <div class="project-body">
-              <h3>Modern Portfolio Website</h3>
-              <p>HTML - CSS - JS</p>
-              <div class="project-tags">
-                <span>Web</span><span>UI</span><span>Performance</span>
-              </div>
+          <article class="skill-card glass reveal" data-category="infra">
+            <h3>Cloud & Deployment</h3>
+            <p class="lead">Building and deploying scalable inference services with modern infrastructure and containerization tools.</p>
+            <div class="tags">
+              <span class="tag">AWS</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Kubernetes</span>
+              <span class="tag">Real-Time Inference</span>
+            </div>
+          </article>
+
+          <article class="skill-card glass reveal" data-category="infra">
+            <h3>Data & Pipelines</h3>
+            <p class="lead">ETL development, large-scale record processing, monitoring, and deployment lifecycle improvements.</p>
+            <div class="tags">
+              <span class="tag">ETL Pipelines</span>
+              <span class="tag">MLOps</span>
+              <span class="tag">Monitoring</span>
+              <span class="tag">Data Workflows</span>
+            </div>
+          </article>
+
+          <article class="skill-card glass reveal" data-category="llm">
+            <h3>AI Training & Quality</h3>
+            <p class="lead">High-accuracy task execution under strict guidelines with strong quality standards and review discipline.</p>
+            <div class="tags">
+              <span class="tag">Generalist AI Tasks</span>
+              <span class="tag">Quality Standards</span>
+              <span class="tag">Response Review</span>
+              <span class="tag">Model Weakness Analysis</span>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
     <section class="section" id="experience">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Experience</h2>
-          <p class="muted">Roles in AI data, support, and operations.</p>
-        </div>
+        <h2 class="section-title reveal">Professional Experience</h2>
+        <p class="section-subtitle reveal">
+          A snapshot of impact across engineering, training, deployment, annotation, and AI product performance.
+        </p>
 
         <div class="timeline">
-          <div class="tl-item card pop reveal">
-            <div class="tl-top">
-              <h3 class="h3">Technical Support Specialist - Jowa Networks Ltd</h3>
-              <span class="muted">May 2024 - Present</span>
-            </div>
-            <ul class="list">
-              <li>Provided remote and on-site technical support for network and system issues.</li>
-              <li>Managed tickets with clear categorization and structured documentation.</li>
-              <li>Diagnosed hardware, software, and connectivity problems to minimize downtime.</li>
+          <article class="timeline-card glass reveal">
+            <div class="timeline-meta">May 2023 – Present • Intelligent Systems Corp</div>
+            <h3>Senior AI Engineer</h3>
+            <p>Leading the development of large language model applications and AI assistants for high-scale usage.</p>
+            <ul class="timeline-points">
+              <li>Led development of AI assistants used by more than 50k users.</li>
+              <li>Deployed scalable ML pipelines that reduced processing time by 40%.</li>
+              <li>Architected real-time inference systems on AWS using Docker and Kubernetes.</li>
+              <li>Mentored junior engineers and coordinated cross-team AI initiatives.</li>
+              <li>Optimized LLM workflows for stronger reasoning accuracy and system performance.</li>
             </ul>
-          </div>
+          </article>
 
-          <div class="tl-item card pop reveal">
-            <div class="tl-top">
-              <h3 class="h3">Freelance Data Annotator - Remotasks (Remote)</h3>
-              <span class="muted">Sep 2023 - Feb 2024</span>
-            </div>
-            <ul class="list">
-              <li>Performed text and image annotation tasks supporting ML model improvement.</li>
-              <li>Conducted pairwise comparisons and rated outputs using task guidelines.</li>
-              <li>Maintained high accuracy and consistency across labeling assignments.</li>
+          <article class="timeline-card glass reveal">
+            <div class="timeline-meta">January 2023 – November 2025 • Scale AI</div>
+            <h3>AI Trainer</h3>
+            <p>Delivered high-quality evaluation and annotation work to improve AI performance across diverse tasks.</p>
+            <ul class="timeline-points">
+              <li>Performed detailed video annotations for computer vision training.</li>
+              <li>Executed structured image description and rating tasks for model grounding and accuracy.</li>
+              <li>Designed prompts to challenge model reasoning and expose weaknesses.</li>
+              <li>Applied logical reasoning to assess AI-generated outputs.</li>
+              <li>Completed side-by-side comparisons and preference ranking evaluations.</li>
             </ul>
-          </div>
+          </article>
 
-          <div class="tl-item card pop reveal">
-            <div class="tl-top">
-              <h3 class="h3">NOC Engineer (Intern) - Presco Networks</h3>
-              <span class="muted">Apr 2023 - Sep 2023</span>
-            </div>
-            <ul class="list">
-              <li>Monitored and optimized network performance for client environments.</li>
-              <li>Maintained accurate billing and usage records.</li>
-              <li>Installed and documented network and surveillance systems.</li>
+          <article class="timeline-card glass reveal">
+            <div class="timeline-meta">March 2021 – January 2023 • DataVision Labs</div>
+            <h3>Machine Learning Engineer</h3>
+            <p>Built practical machine learning systems with measurable operational improvements.</p>
+            <ul class="timeline-points">
+              <li>Built predictive models that improved forecasting accuracy by 35%.</li>
+              <li>Designed computer vision systems for automated quality inspection.</li>
+              <li>Developed ETL pipelines handling millions of records daily.</li>
+              <li>Implemented MLOps practices for continuous monitoring and deployment.</li>
             </ul>
-          </div>
+          </article>
+
+          <article class="timeline-card glass reveal">
+            <div class="timeline-meta">February 2020 – February 2021 • Technova Solutions</div>
+            <h3>AI Developer</h3>
+            <p>Focused on business-aligned AI solutions, workflow automation, and NLP-driven applications.</p>
+            <ul class="timeline-points">
+              <li>Developed NLP chatbots and recommendation engines.</li>
+              <li>Automated internal workflows, saving 20+ labor hours weekly.</li>
+              <li>Translated business requirements into deployable AI solutions.</li>
+              <li>Maintained databases and optimized ML system performance.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <section class="section" id="projects">
+      <div class="container">
+        <h2 class="section-title reveal">Selected Portfolio Highlights</h2>
+        <p class="section-subtitle reveal">
+          Since the uploaded profile focuses on experience rather than named projects, these cards professionally present the kinds of high-value work demonstrated in the profile.
+        </p>
+
+        <div class="projects-grid">
+          <article class="project-card glass reveal">
+            <img
+              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80"
+              alt="AI assistant dashboard project"
+              class="project-image"
+            />
+            <span class="project-badge">LLM Systems</span>
+            <h3>AI Assistant Platform</h3>
+            <p>Designed and optimized large language model applications supporting high-volume user interactions, with emphasis on reasoning quality, scalability, and performance.</p>
+            <div class="tags">
+              <span class="tag">LLM Applications</span>
+              <span class="tag">Reasoning Quality</span>
+              <span class="tag">Scalability</span>
+            </div>
+          </article>
+
+          <article class="project-card glass reveal">
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+              alt="Machine learning analytics pipeline"
+              class="project-image"
+            />
+            <span class="project-badge">Production ML</span>
+            <h3>Scalable ML Pipeline Optimization</h3>
+            <p>Built and improved machine learning pipelines that significantly reduced processing time while supporting more efficient model delivery and operational throughput.</p>
+            <div class="tags">
+              <span class="tag">ML Pipelines</span>
+              <span class="tag">Optimization</span>
+              <span class="tag">Automation</span>
+            </div>
+          </article>
+
+          <article class="project-card glass reveal">
+            <img
+              src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=80"
+              alt="Computer vision inspection system"
+              class="project-image"
+            />
+            <span class="project-badge">Computer Vision</span>
+            <h3>Automated Quality Inspection</h3>
+            <p>Developed computer vision systems for automated inspection workflows, combining annotation rigor, model support, and practical AI application design.</p>
+            <div class="tags">
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Quality Inspection</span>
+              <span class="tag">Annotation</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="container">
+        <h2 class="section-title reveal">Education</h2>
+        <p class="section-subtitle reveal">
+          Academic background supporting a strong foundation in computer science and intelligent systems.
+        </p>
+
+        <div class="timeline">
+          <article class="timeline-card glass reveal">
+            <div class="timeline-meta">September 2016 – September 2020</div>
+            <h3>Stanford University</h3>
+            <p>Bachelor of Science in Computer Science</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="contact">
       <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Contact</h2>
-          <p class="muted">Let’s work together.</p>
-        </div>
+        <h2 class="section-title reveal">Contact</h2>
+        <p class="section-subtitle reveal">
+          This section is ready for real portfolio deployment. Update the links and connect the form to EmailJS, Formspree, Netlify Forms, or your preferred backend if you want live submissions.
+        </p>
 
-        <div class="grid-2">
-          <div class="card pop reveal">
-            <h3 class="h3">Reach me</h3>
+        <div class="contact-grid">
+          <div class="contact-card glass reveal">
+            <h3>Get in Touch</h3>
+            <p class="lead">Available for AI engineering, machine learning, LLM, and applied AI opportunities.</p>
+
             <div class="contact-list">
-              <a class="contact-item" href="mailto:evanschege35@gmail.com">
-                <span>Email</span><strong>evanschege35@gmail.com</strong>
-              </a>
-              <a class="contact-item" href="tel:+254705516386">
-                <span>Phone</span><strong>+254 705 516 386</strong>
-              </a>
-              <a class="contact-item" href="https://www.linkedin.com/in/evans-chege" target="_blank" rel="noreferrer">
-                <span>LinkedIn</span><strong>evans-chege</strong>
-              </a>
               <div class="contact-item">
-                <span>Location</span><strong>Nairobi, Kenya</strong>
+                <strong>Email</strong>
+                <span>milsteadjustin74@gmail.com</span>
+              </div>
+              <div class="contact-item">
+                <strong>LinkedIn</strong>
+                <span>www.linkedin.com/in/milstead-justin</span>
               </div>
             </div>
           </div>
 
-          <form class="card pop reveal contact-form" id="contactForm">
-            <h3 class="h3">Send a message</h3>
-
-            <label>
-              <span>Name</span>
-              <input required type="text" name="name" placeholder="Your name" />
-            </label>
-
-            <label>
-              <span>Email</span>
-              <input required type="email" name="email" placeholder="your@email.com" />
-            </label>
-
-            <label>
-              <span>Message</span>
-              <textarea required name="message" rows="5" placeholder="Tell me what you need..."></textarea>
-            </label>
-
-            <button class="btn" type="submit">Send</button>
-          </form>
         </div>
       </div>
     </section>
   </main>
 
-<footer class="footer">
-  <div class="container footer-inner">
-    <p>
-      © <span id="year"></span> Evanson Mwangi Chege. All rights reserved.
-    </p>
-    <a href="#top" class="footer-top">Back to top ↑</a>
-  </div>
-</footer>
-
-
-  <!-- Project Modal -->
-  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-backdrop" data-close></div>
-    <div class="modal-card pop">
-      <button class="modal-close" aria-label="Close" data-close>✕</button>
-      <img id="modalImg" alt="Project preview" />
-      <div class="modal-body">
-        <h3 id="modalTitle" class="h3"></h3>
-        <p id="modalDesc" class="muted"></p>
-        <div id="modalTags" class="tag-row"></div>
-      </div>
+  <footer>
+    <div class="container">
+      <p>© 2026 Milstead Justin. Built as a modern AI engineering portfolio.</p>
     </div>
-  </div>
+  </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const skillCards = document.querySelectorAll('.skill-card');
+    const counters = document.querySelectorAll('.stat-number');
+    const reveals = document.querySelectorAll('.reveal');
+    const form = document.getElementById('contactForm');
+    const formNote = document.getElementById('formNote');
+    const sections = document.querySelectorAll('main section[id]');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    navAnchors.forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+
+        skillCards.forEach(card => {
+          const category = card.dataset.category;
+          const show = filter === 'all' || filter === category;
+          card.style.display = show ? 'block' : 'none';
+        });
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(item => revealObserver.observe(item));
+
+    const animateCounter = (el) => {
+      if (el.dataset.animated === 'true') return;
+      el.dataset.animated = 'true';
+
+      const target = Number(el.dataset.target);
+      const duration = 1400;
+      const startTime = performance.now();
+
+      const step = (currentTime) => {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.floor(eased * target);
+        el.textContent = value;
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target;
+        }
+      };
+
+      requestAnimationFrame(step);
+    };
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.15 });
+
+    counters.forEach(counter => {
+      counterObserver.observe(counter);
+      const rect = counter.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inView) {
+        animateCounter(counter);
+      }
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.reset();
+      formNote.textContent = 'Message captured successfully in this demo. Connect the form to a backend service to enable real submissions.';
+    });
+
+    const setActiveLink = () => {
+      let currentId = '';
+      sections.forEach(section => {
+        const top = window.scrollY;
+        const offset = section.offsetTop - 140;
+        const height = section.offsetHeight;
+        if (top >= offset && top < offset + height) {
+          currentId = section.id;
+        }
+      });
+
+      navAnchors.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+      });
+    };
+
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+  </script>
 </body>
 </html>
